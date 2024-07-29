@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+.page-container {
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .content {
+      padding: 2rem;
+    }
+  }
+
+ 
