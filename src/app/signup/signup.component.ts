@@ -12,7 +12,7 @@ import { SignupService } from '../services/signup.service';
 })
 export class SignupComponent {
   registerForm!: FormGroup;
-  SignupService: any;
+  SignupService: any; 
 
   
 
