@@ -9,7 +9,8 @@ import { SignupModule } from './signup/signup/signup.module';
     
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    
   ]
 })
 export class AppModule { }

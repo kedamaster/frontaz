@@ -4,7 +4,7 @@ export interface RegistrationData {
   username: string;
   password: string;
   confirmPassword: string;
-  age: number;
+  age: String;
   gender: string;
   email: string;
   location: string;

@@ -45,6 +45,7 @@
                   "maximumError": "4kB"
                 }
               ],
+              "httpClient": true,
               "outputHashing": "all"
             },
             "development": {
@@ -96,4 +97,5 @@
   "cli": {
     "analytics": "188ceb16-7112-4cb8-a4c7-f7863b090f58"
   }
+  
 }
