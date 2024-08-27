@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import { RegistrationData } from '../signup/registration-data/registration-data.module';
 import Swal from 'sweetalert2';
 import { SignupService } from '../services/signup.service';
@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 
 
 @Component({
-  selector: 'app-signup',
+  selector: 'app-signup', 
   standalone: true,
   templateUrl: './signup.component.html',
   imports: [RouterModule, HttpClientModule],
