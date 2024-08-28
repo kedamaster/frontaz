@@ -7,11 +7,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-signup', 
   standalone: true,
   templateUrl: './signup.component.html',
-  imports: [RouterModule, HttpClientModule],
+  imports: [RouterModule, HttpClientModule, ReactiveFormsModule],
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
@@ -34,7 +35,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  onRegister() {
+  onSubmit() {
     console.log('Register link clicked');
     if (this.registerForm.valid) {
       const registrationData: RegistrationData = {
