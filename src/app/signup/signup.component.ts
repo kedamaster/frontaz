@@ -1,24 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationData } from '../signup/registration-data/registration-data.module';
 import Swal from 'sweetalert2';
 import { SignupService } from '../services/signup.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-
-
 @Component({
-  selector: 'app-signup', 
+  selector: 'app-signup',
   standalone: true,
   templateUrl: './signup.component.html',
-  imports: [RouterModule, HttpClientModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule],
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor( private formBuilder: FormBuilder, private  SignupService: SignupService) { }
+  constructor(private formBuilder: FormBuilder, private signupService: SignupService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -31,7 +28,7 @@ export class SignupComponent implements OnInit {
       gender: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       location: ['', Validators.required],
-     // dob: ['', Validators.required]
+      // dob: ['', Validators.required] // Uncomment if needed
     });
   }
 
@@ -48,30 +45,34 @@ export class SignupComponent implements OnInit {
         gender: this.registerForm.get('gender')?.value,
         email: this.registerForm.get('email')?.value,
         location: this.registerForm.get('location')?.value,
-      // Handle form submission logic here
-      
-    };
-    this.SignupService.registerUser(registrationData).subscribe(
-      (response: any) => {
-        console.log('Registration successful:', response);
-        Swal.fire({
-          title: "welcome!",
-          text: "You have succesfully registered",
-          icon: "success"
-        });
-        // Handle successful registration, e.g., navigate to a confirmation page
-      },
-      (error: any) => {
-        Swal.fire({
-          title: "Oops!",
-          text: "error occured!",
-          icon: "error"
-        });
-        console.error('Registration failed:', error);
-        // Handle registration failure, e.g., display an error message
-      }
-    );
+      };
+
+      this.signupService.registerUser(registrationData).subscribe(
+        (response: any) => {
+          console.log('Registration successful:', response);
+          Swal.fire({
+            title: "Welcome!",
+            text: "You have successfully registered",
+            icon: "success"
+          });
+          // Handle successful registration, e.g., navigate to a confirmation page
+        },
+        (error: any) => {
+          Swal.fire({
+            title: "Oops!",
+            text: "An error occurred!",
+            icon: "error"
+          });
+          console.error('Registration failed:', error);
+          // Handle registration failure, e.g., display an error message
+        }
+      );
+    } else {
+      Swal.fire({
+        title: "Invalid Form",
+        text: "Please fill all required fields correctly.",
+        icon: "warning"
+      });
+    }
   }
-    
- }
 }
