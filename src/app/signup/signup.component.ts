@@ -31,34 +31,18 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     console.log('Register link clicked');
 
-    const registrationData: RegistrationData = {
-      
+    const registrationData: RegistrationData = {      
       username: this.registerForm.get('username')?.value,
       password: this.registerForm.get('password')?.value,
       confirmPassword: this.registerForm.get('confirmPassword')?.value,
     };
-    if (this.registerForm.invalid) { 
-    
+
     this.signupService.registerUser(registrationData).subscribe(
       (response: any) => {
-        console.log('Registration successful:', response);
-
-        
-    
-       // Handle successful registration, e.g., navigate to a confirmation page
-      },
-      // (error: any) => {
-      //   console.error('Registration failed:', error);
-      //   Swal.fire({
-      //     title: "Registration Failed",
-      //     text: "An error occurred during registration. Please try again.",
-      //     icon: "error"
-      //   });
-      //   // Handle registration failure, e.g., display specific error messages
-      // }
-  
+        console.log('Registration successful:', response); // Handle successful registration, e.g., navigate to a confirmation page
+      },  
     );
-  }
+    
   }
 }
 
