@@ -7,52 +7,27 @@
       <div class="lg:w-2/6 md:w-1/2 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0" ngIf="!isRegistered">
         <h1 class="text-white text-lg font-medium title-font mb-5">Register</h1>
         <h3 class="text-white text-lg font-medium title-font mb-5">Already have an account? Login</h3>
-       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" > 
+      
+      
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" > 
         <!--form [formGroup]="registerForm" (register)="onRegister()" (ngSubmit)="onRegister()" -->
        
         <div class="relative mb-4 " >
          <div class="formGroup" >
-          <label for="firstName" class="leading-7 text-sm text-gray-400">Name</label>
-          <input type="text"  id="full-name" formControlName="firstName" name="full-name" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"required>
+          <label for="firstName" class="leading-7 text-sm text-gray-400">username</label>
+          <input type="text"  id="username" formControlName="username" name="username" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required >
          </div>
-        </div>
-
-        <div class="relative mb-4" >
-          <label for="lastName" class="leading-7 text-sm text-gray-400">Surname</label>
-          <input type="lastName"  id="lastName" name="lastName" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
-        </div>
-        <div class="relative mb-4" >
-          <label for="username" class="leading-7 text-sm text-gray-400">Username</label>
-          <input type="username"  id="username" name="username" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
         </div>
           <div class="relative mb-4">
             <label for="password" class="leading-7 text-sm text-gray-400">Password</label>
-            <input type="text"  id="password" name="password" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <input type="text"  id="password" formControlName="password" name="password" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required >
           </div>
           <div class="relative mb-4">
             <label for="confirmPassword" class="leading-7 text-sm text-gray-400">Confirm Password</label>
-            <input type="text"  id="confirmPassword" name="confirmPassword" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <input type="text"  id="confirmPassword" formControlName="confirmPassword"  name="confirmPassword" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required >
           </div>
-          <div class="relative mb-4">
-            <label for="age" class="leading-7 text-sm text-gray-400">Age</label>
-            <input type="integer"  id="age" name="age" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-          </div>
-          <div class="relative mb-4">
-            <label for="gender" class="leading-7 text-sm text-gray-400">Sex</label>
-            <input type="text"  id="gender" name="gender" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-          </div>
-          <div class="relative mb-4">
-            <label for="age" class="leading-7 text-sm text-gray-400">Email</label>
-            <input type="email"  name="email" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-          </div>
-          <div class="relative mb-4">
-            <label for="location" class="leading-7 text-sm text-gray-400">Location</label>
-            <input type="location"  id="location" name="location" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-yellow-900 rounded border border-gray-600 focus:border-yellow-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-          </div>
-          
-     
-        <!-- <button (click)="onSubmit()" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Sign Up</button> -->
-        <button type="submit" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Sign Up</button>
+          <!--<button (click)="onSubmit()" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Sign Up</button> -->
+        <button type="onSubmit()" class="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Sign Up</button>
        </form>
       </div>
     </div>
