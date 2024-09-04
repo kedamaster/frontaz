@@ -1,6 +1,3 @@
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationData } from '../signup/registration-data/registration-data.module';
@@ -42,7 +39,22 @@ export class SignupComponent implements OnInit {
         console.log('Registration successful:', response); // Handle successful registration, e.g., navigate to a confirmation page
       },  
     );
-    
+    if (this.registerForm.valid)
+    {
+      Swal.fire({
+                  title: "Welcome!",
+                  text: "You have successfully registered",
+                  icon: "success"
+                });
+    }
+    else(this.registerForm.invalid)
+    {
+      Swal.fire({
+                title: "Form Error",
+                text: "Please fill in all required fields correctly.",
+                icon: "error"
+              });
+    }
   }
 }
 
