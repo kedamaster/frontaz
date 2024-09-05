@@ -8,6 +8,7 @@ import { SymptomsComponent } from './symptoms/symptoms.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 //import { PersonalDetailsComponent } from './personal-details/personal-details.component';
 import { SessionComponent } from './personal-details/session/session.component';
+import { SymptomCheckerComponent } from './symptom-checker/symptom-checker.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -19,5 +20,6 @@ export const routes: Routes = [
     { path: 'symptoms', component: SymptomsComponent},
     { path: 'doctors', component:DoctorsComponent},
     //{ path: 'personal-details', component:PersonalDetailsComponent},
-    { path: 'session', component:SessionComponent}
+    { path: 'session', component:SessionComponent},
+    { path: 'symptom-checker', component:SymptomCheckerComponent}
 ];
