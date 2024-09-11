@@ -9,6 +9,9 @@ import { DoctorsComponent } from './doctors/doctors.component';
 //import { PersonalDetailsComponent } from './personal-details/personal-details.component';
 import { SessionComponent } from './personal-details/session/session.component';
 import { SymptomCheckerComponent } from './symptom-checker/symptom-checker.component';
+import { WhyChooseComponent } from './why-choose/why-choose.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { PreventionTreatmentComponent } from './prevention-treatment/prevention-treatment.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -21,5 +24,8 @@ export const routes: Routes = [
     { path: 'doctors', component:DoctorsComponent},
     //{ path: 'personal-details', component:PersonalDetailsComponent},
     { path: 'session', component:SessionComponent},
-    { path: 'symptom-checker', component:SymptomCheckerComponent}
+    { path: 'symptom-checker', component:SymptomCheckerComponent},
+    { path: 'why-choose', component:WhyChooseComponent},
+    { path: 'welcome', component:WelcomeComponent},
+    { path: 'prevention-treatment', component:PreventionTreatmentComponent}
 ];
