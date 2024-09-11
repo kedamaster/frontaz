@@ -7,12 +7,12 @@ import { SignupService } from '../../services/signup.service';
 
 
 @NgModule({
-  declarations: [SignupComponent],
+  declarations: [],
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
   providers:[SignupService],
-  exports: [SignupComponent]
+  exports: []
 })
 export class SignupModule { }

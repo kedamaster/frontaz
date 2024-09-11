@@ -4,6 +4,7 @@ import { RegistrationData } from '../signup/registration-data/registration-data.
 import Swal from 'sweetalert2';
 import { SignupService } from '../services/signup.service';
 import { RouterModule } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -23,12 +24,11 @@ export class SignupComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
-    });
+    })
   }
-
+  
   onSubmit() {
     console.log('Register link clicked');
-
     const registrationData: RegistrationData = {      
       username: this.registerForm.get('username')?.value,
       password: this.registerForm.get('password')?.value,
@@ -37,28 +37,170 @@ export class SignupComponent implements OnInit {
 
     this.signupService.registerUser(registrationData).subscribe(
       (response: any) => {
-        console.log('Registration successful:', response); // Handle successful registration, e.g., navigate to a confirmation page
-      },  
-    )
-    if (this.registerForm.valid)
-    {
-   
-      Swal.fire({
-                  title: "Welcome!",
-                  text: "You have successfully registered",
-                  icon: "success"
-                })
+        if (response.success) {
+          console.log('object:', this.registerForm.value);
+          Swal.fire({
+            title: "Success!",
+            text: response.message,
+            icon: "success"
+          });
+        } else {
+          console.error('invalid');
+          Swal.fire({
+            title: "Error!",
+            text: response.message,
+            icon: "error"
+          });
+        }
+        console.log('Registered successfully:', response);
+      },
+      (error) => {
+        console.error('Registration error:', error);
+        Swal.fire({
+          title: "Error!",
+          text: "An error occurred during registration.",
+          icon: "error"
+        });
+      }
+    );
 }
-    else(this.registerForm.invalid)
-    {
-      Swal.fire({
-                title: "Form Error",
-                text: "Please fill in all required fields correctly.",
-                icon: "error"
-              });
-    }
   }
-}
+
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+// import { RegistrationData } from '../signup/registration-data/registration-data.module';
+// import Swal from 'sweetalert2';
+// import { SignupService } from '../services/signup.service';
+// import { RouterModule } from '@angular/router';
+// import { HttpErrorResponse } from '@angular/common/http';
+
+// @Component({
+//   selector: 'app-signup',
+//   standalone: true,
+//   templateUrl: './signup.component.html',
+//   imports: [RouterModule, ReactiveFormsModule],
+//   styleUrls: ['./signup.component.css']
+// })
+// export class SignupComponent implements OnInit {
+//   registerForm!: FormGroup;
+//   router: any;
+
+//   constructor(private formBuilder: FormBuilder, private signupService: SignupService) { }
+
+//   ngOnInit() {
+//     this.registerForm = this.formBuilder.group({
+//       username: ['', Validators.required],
+//       password: ['', Validators.required],
+//       confirmPassword: ['', Validators.required]
+//     })
+//   }
+
+//   onSubmit() {
+//     console.log('Register link clicked');
+//     console.log('object:',this.registerForm.value);
+
+//    if(this.registerForm.invalid){
+//       console.log('Registration failed',Response);
+//       Swal.fire({
+//                           title: "ERror!",
+//                           text: "You have successfully registered",
+//                           icon: "error"
+//                         })
+//     }
+//    else if (this.registerForm.valid){
+     
+//     const registrationData: RegistrationData = {      
+//       username: this.registerForm.get('username')?.value,
+//       password: this.registerForm.get('password')?.value,
+//       confirmPassword: this.registerForm.get('confirmPassword')?.value,
+     
+//     }
+//     Swal.fire({
+//       title: "Success!",
+//       text: "You have successfully registered",
+//       icon: "success"
+//     })
+//     this.signupService.registerUser(registrationData).subscribe(
+//       (response: any) => {
+//         console.log('Registration successfully:', response); // Handle successful registration, e.g., navigate to a confirmation page
+        
+//       }
+//     )
+//     }
+//   }
+// } else {
+//   Swal.fire({
+//     title: "Invalid Form!",
+//     text: "Please fill in all required fields.",
+//     icon: "warning"
+//   });
+// }
+  // }
+  // else
+  //     {     
+  //       Swal.fire({
+  //                   title: "ERror!",
+  //                   text: "You have successfully registered",
+  //                   icon: "success"
+  //                 })
+  // }    
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+// import { RegistrationData } from '../signup/registration-data/registration-data.module';
+// import Swal from 'sweetalert2';
+// import { SignupService } from '../services/signup.service';
+// import { RouterModule } from '@angular/router';
+// import { HttpErrorResponse } from '@angular/common/http';
+
+// @Component({
+//   selector: 'app-signup',
+//   standalone: true,
+//   templateUrl: './signup.component.html',
+//   imports: [RouterModule, ReactiveFormsModule],
+//   styleUrls: ['./signup.component.css']
+// })
+// export class SignupComponent implements OnInit {
+//   registerForm!: FormGroup;
+//   router: any;
+
+//   constructor(private formBuilder: FormBuilder, private signupService: SignupService) { }
+
+//   ngOnInit() {
+//     this.registerForm = this.formBuilder.group({
+//       username: ['', Validators.required],
+//       password: ['', Validators.required],
+//       confirmPassword: ['', Validators.required]
+//     })
+//   }
+
+//   onSubmit() {
+//     console.log('Register link clicked')
+//     const registrationData: RegistrationData = {      
+//       username: this.registerForm.get('username')?.value,
+//       password: this.registerForm.get('password')?.value,
+//       confirmPassword: this.registerForm.get('confirmPassword')?.value,
+//     }
+//     this.signupService.registerUser(registrationData).subscribe(
+//       (response: any) => {
+//         console.log('Registration successful:', response); // Handle successful registration, e.g., navigate to a confirmation page
+//       },  
+//     )
+    
+//     if (this.registerForm.valid)
+//       {     
+//         Swal.fire({
+//                     title: "Welcome!",
+//                     text: "You have successfully registered",
+//                     icon: "success"
+//                   })
+//   }    
+//   }
+  
+// }
 
 
 

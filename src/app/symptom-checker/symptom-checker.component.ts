@@ -90,7 +90,7 @@ export class SymptomCheckerComponent {
 
   handleSubmit(): void {
     // Replace 'YOUR_BACKEND_URL' with the actual URL of your backend API
-    const backendUrl = 'YOUR_BACKEND_URL/analyze-symptoms';
+    const backendUrl = 'http://localhost:8080/api/stds/find';
 
     this.http.post<{ diagnosis: string }>(backendUrl, { symptoms: this.selectedSymptoms })
       .subscribe(
