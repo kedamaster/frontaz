@@ -1,0 +1,51 @@
+<div class="container mx-auto px-4 py-8 bg-black text-white min-h-screen">
+    <h1 class="text-5xl font-bold mb-8">STD Information</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="col-span-1">
+        <h2 class="text-3xl font-semibold mb-6">Select an STD:</h2>
+        <ul class="space-y-3">
+          <li *ngFor="let std of stdList">
+            <button
+              (click)="selectSTD(std)"
+              class="w-full text-left px-6 py-3 rounded-md text-lg"
+              [ngClass]="{'bg-white text-black': selectedSTD === std, 'bg-gray-800 hover:bg-gray-700': selectedSTD !== std}"
+            >
+              {{ std.name }}
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="col-span-2" *ngIf="selectedSTD">
+        <h2 class="text-5xl font-bold mb-6">{{ selectedSTD.name }}</h2>
+        <p class="text-xl mb-8 leading-relaxed">{{ selectedSTD.description }}</p>
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold mb-6">Symptoms in Women:</h3>
+          <ul class="list-disc list-inside text-xl space-y-2">
+            <li *ngFor="let symptom of selectedSTD.symptomsWomen">{{ symptom }}</li>
+          </ul>
+        </div>
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold mb-6">Symptoms in Men:</h3>
+          <ul class="list-disc list-inside text-xl space-y-2">
+            <li *ngFor="let symptom of selectedSTD.symptomsMen">{{ symptom }}</li>
+          </ul>
+        </div>
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold mb-6">Prevention:</h3>
+          <ul class="list-disc list-inside text-xl space-y-2">
+            <li *ngFor="let method of selectedSTD.prevention">{{ method }}</li>
+          </ul>
+        </div>
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold mb-6">Testing:</h3>
+          <ul class="list-disc list-inside text-xl space-y-2">
+            <li *ngFor="let test of selectedSTD.testing">{{ test }}</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-3xl font-semibold mb-6">Symptom Timeline:</h3>
+          <p class="text-xl leading-relaxed">{{ selectedSTD.symptomTimeline }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
