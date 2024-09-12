@@ -2,46 +2,71 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface LoginRequest {
+  username: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  message: string;
+  success: boolean;
+}
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LogingService {
-  private apiUrl = 'http://localhost:8080/api/students';
+  private baseUrl = 'http://localhost:8080/api/students'; // Replace with your actual backend API URL
 
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<any> {
-    const body = { username, password };
-    return this.http.post(`${this.apiUrl}/login`, body);
+  authenticate(username: string, password: string): Observable<LoginResponse> {
+    const url = `${this.baseUrl}/login`;
+    const body: LoginRequest = { username, password };
+    
+    return this.http.post<LoginResponse>(url, body);
   }
-
-  // constructor(private http: HttpClient) {}
-
-  // login(RegistrationData: { user_name: string; password: string }): Observable<{ token: string }> {
-  //   const url = `${this.apiUrl}/login`; 
-  //   return this.http.post<{ token: string }>(this.apiUrl, RegistrationData);
-  // }
 }
 
-// import { HttpClient } from '@angular/common/http';
+
 // import { Injectable } from '@angular/core';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { Observable } from 'rxjs';
-// import { RegistrationData } from '../signup/registration-data/registration-data.module';
-// import { SignupService } from './signup.service';
+
+// export interface LoginRequest {
+//   username: string;
+//   password: string;
+// }
+
+// export interface LoginResponse {
+//   message: string;
+//   success: boolean;
+// }
 
 // @Injectable({
-//   providedIn: 'root'
+//   providedIn: 'root',
 // })
 // export class LogingService {
-  
-//     private baseUrl = 'http://localhost:8080/api/students';
-  
-//     constructor(private http: HttpClient) {}
-  
-//     loginUser(userData: any): Observable<any> {
-//       const url = `${this.baseUrl}/login`; // Replace with the registration endpoint in your backend
-//       return this.http.post(url, userData);
-//     }
+//   private baseUrl = 'http://localhost:8080/api/students'; // Replace with your actual backend API URL
+
+//   constructor(private http: HttpClient) {}
+
+//   login(loginRequest: LoginRequest): Observable<LoginResponse> {
+//     const url = `${this.baseUrl}/login`;
+//     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+//     return this.http.post<LoginResponse>(this.baseUrl, loginRequest, { headers });
+//   }
+// }@Injectable({
+//   providedIn: 'root'
+// })
+// export class SignupService {
+//   private baseUrl = 'http://localhost:8080/api/students';
+
+//   constructor(private http: HttpClient) {}
+
+//   registerUser(userData: any): Observable<any> {
+//     const url = `${this.baseUrl}/SignUp`; // Replace with the registration endpoint in your backend
+//     return this.http.post(url, userData);
+//   }
 
   
-

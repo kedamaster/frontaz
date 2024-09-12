@@ -15,9 +15,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class SignupComponent implements OnInit {
   registerForm!: FormGroup;
-  router: any;
+  
 
-  constructor(private formBuilder: FormBuilder, private signupService: SignupService) { }
+  constructor(private formBuilder: FormBuilder, private signupService: SignupService, ) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -44,6 +44,7 @@ export class SignupComponent implements OnInit {
             text: response.message,
             icon: "success"
           });
+          
         } else {
           console.error('invalid');
           Swal.fire({
@@ -53,6 +54,7 @@ export class SignupComponent implements OnInit {
           });
         }
         console.log('Registered successfully:', response);
+    
       },
       (error) => {
         console.error('Registration error:', error);
