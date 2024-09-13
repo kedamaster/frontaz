@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
             icon: "error"
           });
         }
-        console.log('Registered unsuccessfully:', response);
+        console.log('Registered successfully:', response);
     
       },
       (error) => {

@@ -31,20 +31,22 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     console.log('Login button clicked');
-    const { username, password } = this.loginForm.value;
     if (this.loginForm.valid) {
-     
-
+      const { username, password } = this.loginForm.value;
+  
       this.logingService.authenticate(username, password).subscribe(
         (response: any) => {
           console.log('Response received:', response);
-    // Check if the response has the correct success flag
-          if (response.success) {
+  
+          // Check if the status flag is true
+          if (response.status) {
             console.log('Login successful:', response);
             Swal.fire({
               title: "Success!",
               text: response.message,
               icon: "success"
+            }).then(() => {
+              this.router.navigate(['/home']); // Navigate to home or another page
             });
           } else {
             console.error('Login failed:', response.message);
@@ -55,11 +57,12 @@ export class LoginComponent implements OnInit {
             });
           }
         },
-        (error: HttpErrorResponse) => { // Specify the type here
+        (error: HttpErrorResponse) => {
           console.error('Error during login:', error);
           Swal.fire('Error', 'Login failed. Please try again.', 'error');
         }
       );
-    } 
-  }
-}
+    } else {
+      Swal.fire('Error', 'Please fill in all fields.', 'error');
+    }
+  }}
