@@ -26,27 +26,25 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-    });
+    })
   }
 
   onLogin() {
     console.log('Login button clicked');
+    const { username, password } = this.loginForm.value;
     if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
+     
 
       this.logingService.authenticate(username, password).subscribe(
         (response: any) => {
           console.log('Response received:', response);
-
-          // Check if the response has the correct success flag
+    // Check if the response has the correct success flag
           if (response.success) {
             console.log('Login successful:', response);
             Swal.fire({
               title: "Success!",
               text: response.message,
               icon: "success"
-            }).then(() => {
-              this.router.navigate(['/home']);
             });
           } else {
             console.error('Login failed:', response.message);
@@ -62,8 +60,6 @@ export class LoginComponent implements OnInit {
           Swal.fire('Error', 'Login failed. Please try again.', 'error');
         }
       );
-    } else {
-      Swal.fire('Error', 'Please fill in all fields.', 'error');
-    }
+    } 
   }
 }
