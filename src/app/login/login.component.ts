@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
               title: "Success!",
               text: response.message,
               icon: "success"
-            }).then(() => {
+            }).then((onclick) => {
               this.router.navigate(['/home']); // Navigate to home or another page
             });
           } else {

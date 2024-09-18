@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { RegistrationData } from '../signup/registration-data/registration-data.module';
 import Swal from 'sweetalert2';
 import { SignupService } from '../services/signup.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -15,9 +15,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class SignupComponent implements OnInit {
   registerForm!: FormGroup;
+ 
   
 
-  constructor(private formBuilder: FormBuilder, private signupService: SignupService, ) { }
+  constructor(private formBuilder: FormBuilder, private signupService: SignupService,private router: Router ) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -43,6 +44,8 @@ export class SignupComponent implements OnInit {
             title: "Success!",
             text: response.message,
             icon: "success"
+          }).then((onclick) => {
+            this.router.navigate(['/login']); // Navigate to login or another page
           });
           console.log('Registered successfully:', response);
         } else {
