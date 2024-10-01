@@ -76,7 +76,7 @@ npm install -g @angular/cli
 ```
 ng serve
 ```
-##How to Install and use Tailwind CSS 
+## How to Install and use Tailwind CSS 
 
 Step 1:
 ```
@@ -89,7 +89,7 @@ npm install tailwindcss
 Step 3:Use the @tailwind directive to inject Tailwind’s base, components, and utility styles into your CSS file.
 
 ```
-tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
