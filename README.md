@@ -60,6 +60,8 @@ Node.js and npm (Node Package Manager): Most modern frontend frameworks and libr
 
 Code Editor: Developers typically use a code editor, such as Visual Studio Code, Sublime Text, or Atom, to write, edit, and manage the frontend code.
 
+Tailwind: Tailwind CSS is a utility-first CSS framework that streamlines web development by providing a set of pre-designed utility classes.Tailwind’s approach shifts focus from traditional CSS components to functional classes, empowering developers to efficiently build responsive and visually appealing interfaces with minimal effort. 
+
 This module is in github. `dependencies`:
 
 ```
@@ -74,7 +76,33 @@ npm install -g @angular/cli
 ```
 ng serve
 ```
+##How to Install and use Tailwind CSS 
+Step 1:
+```
+npm init -y
+```
+Step 2:
+```
+npm install tailwindcss
+```
+Step 3:Use the @tailwind directive to inject Tailwind’s base, components, and utility styles into your CSS file.
 
+```
+tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Step 4: This is used to create a config file to customize the designs. It is an optional step.
+
+```
+npx tailwindcss init
+```
+Step 5:This command is used to compile style.css is the file that has to be compiled and output.css is the file on which it has to be compiled. If the file output.css is not created earlier then it will automatically be created.
+
+```
+npx tailwindcss build styles.css -o output.css
+```
 
 ## Basic Usage
  
