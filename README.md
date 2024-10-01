@@ -77,6 +77,7 @@ npm install -g @angular/cli
 ng serve
 ```
 ##How to Install and use Tailwind CSS 
+
 Step 1:
 ```
 npm init -y
