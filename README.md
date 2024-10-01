@@ -47,9 +47,8 @@
 
 ## Purpose
 
-Ever encounted a situation whereby students suffer from STDs and STIs ashamed to be open.
-
-: This app, is useful to keep our patient privacy. The patient gets both treatement and privacy.
+Have you ever encountered a situation where students struggle with STDs and STIs but feel too ashamed to speak openly about it?
+: This app is designed to prioritize patient privacy while ensuring they receive appropriate treatment. Patients can access care with the confidence that their confidentiality is protected.
 
 
 ## Installation
